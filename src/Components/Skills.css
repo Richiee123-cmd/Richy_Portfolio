@@ -1,0 +1,125 @@
+.skills-section{
+
+padding:100px 0;
+
+background:#f8f9fa;
+
+}
+
+/* TITLE */
+
+.skills-title{
+
+font-size:38px;
+
+font-weight:600;
+
+margin-bottom:50px;
+
+color:#111;
+
+}
+
+/* SKILL BOX */
+
+.skill-box{
+
+background:white;
+
+padding:25px;
+
+border-radius:10px;
+
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+
+transition:0.3s;
+
+}
+
+.skill-box:hover{
+
+transform:translateY(-6px);
+
+}
+
+/* TITLE */
+
+.skill-title{
+
+display:flex;
+
+align-items:center;
+
+font-size:18px;
+
+font-weight:600;
+
+margin-bottom:12px;
+
+}
+
+/* ICON */
+
+.skill-icon{
+
+font-size:28px;
+
+margin-right:10px;
+
+}
+
+/* ICON COLORS */
+
+.html{ color:#e34c26; }
+
+.css{ color:#264de4; }
+
+.js{ color:#f7df1e; }
+
+.react{ color:#61DBFB; }
+
+.node{ color:#68A063; }
+
+.mongo{ color:#4db33d; }
+
+/* PROGRESS BAR */
+
+.progress{
+
+height:12px;
+
+border-radius:20px;
+
+background:#e9ecef;
+
+}
+
+.progress-bar{
+
+border-radius:20px;
+
+font-size:12px;
+
+font-weight:600;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+}
+
+/* COLORS */
+
+.html-bar{ background:#e34c26; }
+
+.css-bar{ background:#264de4; }
+
+.js-bar{ background:#f7df1e; color:black; }
+
+.react-bar{ background:#61DBFB; color:black; }
+
+.node-bar{ background:#68A063; }
+
+.mongo-bar{ background:#4db33d; }

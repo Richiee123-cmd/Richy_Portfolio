@@ -1,0 +1,86 @@
+/* NAVBAR BACKGROUND */
+
+.custom-navbar{
+
+background: rgba(0,0,0,0.85);
+
+backdrop-filter: blur(10px);
+
+box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+
+padding: 12px 0;
+
+}
+
+
+/* LOGO */
+
+.logo{
+
+font-size: 24px;
+
+font-weight: bold;
+
+color: white !important;
+
+}
+
+.logo span{
+
+color: #facc15;
+
+}
+
+
+/* NAV LINKS */
+
+.nav-link{
+
+font-size: 16px;
+
+margin-left: 20px;
+
+position: relative;
+
+transition: 0.3s;
+
+}
+
+
+/* HOVER EFFECT */
+
+.nav-hover::after{
+
+content: "";
+
+position: absolute;
+
+width: 0%;
+
+height: 2px;
+
+background: #facc15;
+
+left: 0;
+
+bottom: -4px;
+
+transition: 0.3s;
+
+}
+
+
+.nav-hover:hover::after{
+
+width: 100%;
+
+}
+
+
+/* HOVER COLOR */
+
+.nav-link:hover{
+
+color: #facc15 !important;
+
+}
