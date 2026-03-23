@@ -1,86 +1,155 @@
-/* GLOBAL STYLES */
+@import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* ===== VISIBILITY FIXES ===== */
+
+/* Section labels */
+.section-label {
+  color: var(--accent) !important;
+}
+
+/* Section titles */
+.section-title {
+  color: var(--text) !important;
+}
+
+/* Any text inside bg3 cards */
+.container p {
+  color: var(--muted);
+}
+
+/* Force all headings to be visible */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text);
+}
+
+/* Nav links */
+nav a {
+  color: var(--muted);
+}
+
+/* Skill bar labels */
+span, li {
+  color: inherit;
+}
+
+/* Experience timeline points */
+ul li {
+  color: var(--muted);
+}
+
+/* Footer text */
+footer, footer * {
+  color: var(--muted);
+}
+:root {
+  --bg: #0a0a0a;
+  --bg2: #111111;
+  --bg3: #181818;
+  --accent: #c8ff00;
+  --accent2: #ff6b35;
+  --text: #f0f0f0;
+  --muted: #888;
+  --border: rgba(255,255,255,0.07);
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  scroll-behavior: smooth;
-  background-color: #f8f9fa;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
 }
 
-/* NAVBAR */
-
-.navbar {
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+::-webkit-scrollbar {
+  width: 4px;
 }
-
-.navbar-brand {
-  font-size: 22px;
+::-webkit-scrollbar-track {
+  background: var(--bg);
 }
-
-/* HERO SECTION */
-
-.hero-section {
-  height: 100vh;
-
-  background-image:
-  linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-  url("https://images.unsplash.com/photo-1498050108023-c5249f4df085");
-
-  background-size: cover;
-  background-position: center;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 2px;
 }
-
-/* SECTION SPACING */
 
 section {
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding: 100px 0;
 }
 
-/* SKILL CARDS */
-
-.card{
-transition:0.4s;
-cursor:pointer;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
 }
 
-.card:hover{
-transform:translateY(-10px) scale(1.03);
-box-shadow:0 15px 30px rgba(0,0,0,0.2);
-}
-/* PROJECT CARDS */
-
-#projects .card {
-  border-radius: 12px;
-}
-
-/* CONTACT SECTION */
-
-#contact {
-  background: #111;
+.section-label {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
 }
 
-/* BUTTON STYLE */
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
 
-.btn-warning {
-  padding: 10px 25px;
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-family: var(--font-display);
   font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
 }
 
-/* MOBILE */
-
-@media (max-width:768px){
-
-.hero-section h1{
-  font-size:32px;
+.btn-primary {
+  background: var(--accent);
+  color: #000;
+}
+.btn-primary:hover {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(200,255,0,0.3);
 }
 
-.hero-section p{
-  font-size:16px;
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+/* Parallax performance */
+* {
+  -webkit-font-smoothing: antialiased;
 }
 
+section {
+  position: relative;
+  z-index: 1;
 }

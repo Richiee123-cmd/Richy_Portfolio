@@ -1,155 +1,184 @@
-import React from "react";
-import "./Skills.css";
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaDatabase } from "react-icons/fa";
+const skills = [
+  { name: 'React.js', level: 90 },
+  { name: 'Node.js', level: 85 },
+  { name: 'Express.js', level: 85 },
+  { name: 'MongoDB', level: 80 },
+  { name: 'JavaScript (ES6+)', level: 88 },
+  { name: 'Tailwind CSS', level: 82 },
+  { name: 'Next.js', level: 70 },
+  { name: 'MySQL', level: 72 },
+];
 
-function Skills(){
+const uiux = [
+  { name: 'Figma', level: 78 },
+  { name: 'Webflow', level: 72 },
+];
 
-return(
+const tools = ['Git', 'GitHub', 'Postman', 'VS Code', 'Figma', 'Webflow', 'Angular'];
 
-<section id="skills" className="skills-section">
+export default function Skills() {
+  return (
+    <section id="skills" style={{ background: 'var(--bg)' }}>
+      <div className="container">
+        <p className="section-label">Technical Skills</p>
+        <h2 className="section-title" style={{ color: 'var(--text)' }}>My Tech Stack</h2>
 
-<div className="container">
+        <div style={{
+          display: 'grid', gridTemplateColumns: '1.2fr 1fr',
+          gap: '60px', marginTop: '48px'
+        }} className="skills-grid">
 
-<h2 className="skills-title text-center">
-My Skills
-</h2>
+          {/* ---- LEFT: Skill Bars ---- */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+            {skills.map(skill => (
+              <div key={skill.name}>
+                <div style={{
+                  display: 'flex', justifyContent: 'space-between',
+                  alignItems: 'center', marginBottom: '10px'
+                }}>
+                  <span style={{
+                    fontFamily: 'var(--font-display)', fontWeight: 600,
+                    fontSize: '14px', color: 'var(--text)'
+                  }}>{skill.name}</span>
+                  <span style={{
+                    color: 'var(--accent)', fontFamily: 'var(--font-display)',
+                    fontSize: '13px', fontWeight: 700
+                  }}>{skill.level}%</span>
+                </div>
+                <div style={{
+                  height: '6px', background: 'var(--bg3)',
+                  borderRadius: '4px', overflow: 'hidden',
+                  border: '1px solid var(--border)'
+                }}>
+                  <div style={{
+                    height: '100%', width: `${skill.level}%`,
+                    background: 'linear-gradient(90deg, var(--accent), #a8e63d)',
+                    borderRadius: '4px', transition: 'width 1s ease'
+                  }} />
+                </div>
+              </div>
+            ))}
+          </div>
 
-<div className="row justify-content-center">
+          {/* ---- RIGHT: Tools + Certifications + UI/UX ---- */}
+          <div>
 
-{/* HTML */}
+            {/* Tools */}
+            <h3 style={{
+              fontFamily: 'var(--font-display)', fontWeight: 700,
+              fontSize: '20px', marginBottom: '20px', color: 'var(--text)'
+            }}>Tools & Platforms</h3>
 
-<div className="col-md-6 col-lg-5 mb-4">
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '40px' }}>
+              {tools.map(tool => (
+                <span key={tool} style={{
+                  background: 'var(--bg3)', border: '1px solid var(--border)',
+                  borderRadius: '50px', padding: '8px 18px',
+                  fontFamily: 'var(--font-display)', fontSize: '13px',
+                  fontWeight: 600, cursor: 'default', color: 'var(--text)',
+                  transition: 'all 0.3s'
+                }}
+                  onMouseOver={e => {
+                    e.target.style.borderColor = 'var(--accent)';
+                    e.target.style.color = 'var(--accent)';
+                  }}
+                  onMouseOut={e => {
+                    e.target.style.borderColor = 'rgba(255,255,255,0.07)';
+                    e.target.style.color = 'var(--text)';
+                  }}
+                >{tool}</span>
+              ))}
+            </div>
 
-<div className="skill-box">
+            {/* Certifications */}
+            <h3 style={{
+              fontFamily: 'var(--font-display)', fontWeight: 700,
+              fontSize: '20px', marginBottom: '20px', color: 'var(--text)'
+            }}>Certifications</h3>
 
-<div className="skill-title">
-<FaHtml5 className="skill-icon html"/>
-<span>HTML</span>
-</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '40px' }}>
+              {[
+                'Front End Development — CSS (Great Learning)',
+                'OOP with Java (Coursera)',
+                'Internet of Things — IoT (Ethnotech)',
+              ].map(cert => (
+                <div key={cert} style={{
+                  display: 'flex', alignItems: 'flex-start', gap: '12px',
+                  background: 'var(--bg3)', borderRadius: '12px',
+                  padding: '14px 18px', border: '1px solid var(--border)'
+                }}>
+                  <span style={{
+                    color: 'var(--accent)', fontSize: '16px',
+                    marginTop: '1px', flexShrink: 0
+                  }}>✦</span>
+                  <span style={{ color: 'var(--text)', fontSize: '14px', lineHeight: 1.5 }}>
+                    {cert}
+                  </span>
+                </div>
+              ))}
+            </div>
 
-<div className="progress">
-<div className="progress-bar html-bar" style={{width:"90%"}}>
-90%
-</div>
-</div>
+            {/* UI/UX Design */}
+            <h3 style={{
+              fontFamily: 'var(--font-display)', fontWeight: 700,
+              fontSize: '20px', marginBottom: '20px', color: 'var(--text)'
+            }}>UI / UX Design</h3>
 
-</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              {uiux.map(skill => (
+                <div key={skill.name}>
+                  <div style={{
+                    display: 'flex', justifyContent: 'space-between',
+                    alignItems: 'center', marginBottom: '10px'
+                  }}>
+                    <span style={{
+                      fontFamily: 'var(--font-display)', fontWeight: 600,
+                      fontSize: '14px', color: 'var(--text)'
+                    }}>{skill.name}</span>
+                    <span style={{
+                      color: '#ff6b35', fontFamily: 'var(--font-display)',
+                      fontSize: '13px', fontWeight: 700
+                    }}>{skill.level}%</span>
+                  </div>
+                  <div style={{
+                    height: '6px', background: 'var(--bg3)',
+                    borderRadius: '4px', overflow: 'hidden',
+                    border: '1px solid var(--border)'
+                  }}>
+                    <div style={{
+                      height: '100%', width: `${skill.level}%`,
+                      background: 'linear-gradient(90deg, #ff6b35, #ffaa00)',
+                      borderRadius: '4px', transition: 'width 1s ease'
+                    }} />
+                  </div>
+                </div>
+              ))}
+            </div>
 
-</div>
+            {/* UI/UX Note */}
+            <div style={{
+              marginTop: '20px', padding: '16px 20px',
+              background: 'rgba(255,107,53,0.08)',
+              border: '1px solid rgba(255,107,53,0.2)',
+              borderRadius: '12px',
+              display: 'flex', gap: '12px', alignItems: 'flex-start'
+            }}>
+              <span style={{ fontSize: '18px', flexShrink: 0 }}>🎨</span>
+              <span style={{ color: 'var(--text)', fontSize: '13px', lineHeight: 1.6 }}>
+                Passionate about UI/UX design — I enjoy bridging the gap between
+                great design and functional code using Figma and Webflow.
+              </span>
+            </div>
 
-{/* CSS */}
+          </div>
+        </div>
+      </div>
 
-<div className="col-md-6 col-lg-5 mb-4">
-
-<div className="skill-box">
-
-<div className="skill-title">
-<FaCss3Alt className="skill-icon css"/>
-<span>CSS</span>
-</div>
-
-<div className="progress">
-<div className="progress-bar css-bar" style={{width:"85%"}}>
-85%
-</div>
-</div>
-
-</div>
-
-</div>
-
-{/* JavaScript */}
-
-<div className="col-md-6 col-lg-5 mb-4">
-
-<div className="skill-box">
-
-<div className="skill-title">
-<FaJs className="skill-icon js"/>
-<span>JavaScript</span>
-</div>
-
-<div className="progress">
-<div className="progress-bar js-bar" style={{width:"80%"}}>
-80%
-</div>
-</div>
-
-</div>
-
-</div>
-
-{/* React */}
-
-<div className="col-md-6 col-lg-5 mb-4">
-
-<div className="skill-box">
-
-<div className="skill-title">
-<FaReact className="skill-icon react"/>
-<span>React</span>
-</div>
-
-<div className="progress">
-<div className="progress-bar react-bar" style={{width:"80%"}}>
-80%
-</div>
-</div>
-
-</div>
-
-</div>
-
-{/* Node */}
-
-<div className="col-md-6 col-lg-5 mb-4">
-
-<div className="skill-box">
-
-<div className="skill-title">
-<FaNodeJs className="skill-icon node"/>
-<span>Node.js</span>
-</div>
-
-<div className="progress">
-<div className="progress-bar node-bar" style={{width:"75%"}}>
-75%
-</div>
-</div>
-
-</div>
-
-</div>
-
-{/* MongoDB */}
-
-<div className="col-md-6 col-lg-5 mb-4">
-
-<div className="skill-box">
-
-<div className="skill-title">
-<FaDatabase className="skill-icon mongo"/>
-<span>MongoDB</span>
-</div>
-
-<div className="progress">
-<div className="progress-bar mongo-bar" style={{width:"70%"}}>
-70%
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-)
-
+      <style>{`
+        @media (max-width: 768px) {
+          .skills-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+    </section>
+  );
 }
-
-export default Skills
