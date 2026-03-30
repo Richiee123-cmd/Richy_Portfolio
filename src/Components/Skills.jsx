@@ -1,3 +1,24 @@
+import { motion } from "framer-motion";
+
+// Animations
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 50 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6 },
+  },
+};
+
 const skills = [
   { name: 'React.js', level: 90 },
   { name: 'Node.js', level: 85 },
@@ -25,8 +46,12 @@ export default function Skills() {
           My Tech Stack
         </h2>
 
-        <div
+        <motion.div
           className="skills-grid"
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
           style={{
             display: 'grid',
             gridTemplateColumns: '1.2fr 1fr',
@@ -36,9 +61,9 @@ export default function Skills() {
         >
 
           {/* LEFT */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <motion.div variants={fadeUp} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             {skills.map(skill => (
-              <div key={skill.name}>
+              <motion.div key={skill.name} variants={fadeUp}>
                 <div style={{
                   display: 'flex',
                   justifyContent: 'space-between',
@@ -58,19 +83,23 @@ export default function Skills() {
                   borderRadius: '4px',
                   border: '1px solid var(--border)'
                 }}>
-                  <div style={{
-                    height: '100%',
-                    width: `${skill.level}%`,
-                    background: 'linear-gradient(90deg, var(--accent), #a8e63d)',
-                    borderRadius: '4px'
-                  }} />
+                  <motion.div
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${skill.level}%` }}
+                    transition={{ duration: 1 }}
+                    style={{
+                      height: '100%',
+                      background: 'linear-gradient(90deg, var(--accent), #a8e63d)',
+                      borderRadius: '4px'
+                    }}
+                  />
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* RIGHT */}
-          <div>
+          <motion.div variants={fadeUp}>
 
             {/* Tools */}
             <h3 style={titleStyle}>Tools & Platforms</h3>
@@ -82,16 +111,20 @@ export default function Skills() {
               marginBottom: '40px'
             }}>
               {tools.map(tool => (
-                <span key={tool} style={{
-                  background: 'var(--bg3)',
-                  border: '1px solid var(--border)',
-                  borderRadius: '50px',
-                  padding: '8px 16px',
-                  fontSize: '13px',
-                  color: 'var(--text)'
-                }}>
+                <motion.span
+                  key={tool}
+                  whileHover={{ y: -3, borderColor: 'var(--accent)' }}
+                  style={{
+                    background: 'var(--bg3)',
+                    border: '1px solid var(--border)',
+                    borderRadius: '50px',
+                    padding: '8px 16px',
+                    fontSize: '13px',
+                    color: 'var(--text)'
+                  }}
+                >
                   {tool}
-                </span>
+                </motion.span>
               ))}
             </div>
 
@@ -109,17 +142,22 @@ export default function Skills() {
                 'OOP with Java (Coursera)',
                 'Internet of Things — IoT (Ethnotech)',
               ].map(cert => (
-                <div key={cert} style={{
-                  background: 'var(--bg3)',
-                  border: '1px solid var(--border)',
-                  borderLeft: '3px solid var(--accent)',
-                  borderRadius: '12px',
-                  padding: '14px 18px'
-                }}>
+                <motion.div
+                  key={cert}
+                  variants={fadeUp}
+                  whileHover={{ x: 5 }}
+                  style={{
+                    background: 'var(--bg3)',
+                    border: '1px solid var(--border)',
+                    borderLeft: '3px solid var(--accent)',
+                    borderRadius: '12px',
+                    padding: '14px 18px'
+                  }}
+                >
                   <span style={{ color: 'var(--text)', fontSize: '14px' }}>
                     {cert}
                   </span>
-                </div>
+                </motion.div>
               ))}
             </div>
 
@@ -128,7 +166,7 @@ export default function Skills() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
               {uiux.map(skill => (
-                <div key={skill.name}>
+                <motion.div key={skill.name} variants={fadeUp}>
                   <div style={{
                     display: 'flex',
                     justifyContent: 'space-between',
@@ -148,33 +186,40 @@ export default function Skills() {
                     border: '1px solid var(--border)',
                     borderRadius: '4px'
                   }}>
-                    <div style={{
-                      height: '100%',
-                      width: `${skill.level}%`,
-                      background: 'linear-gradient(90deg, #ff6b35, #ffaa00)'
-                    }} />
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${skill.level}%` }}
+                      transition={{ duration: 1 }}
+                      style={{
+                        height: '100%',
+                        background: 'linear-gradient(90deg, #ff6b35, #ffaa00)'
+                      }}
+                    />
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
 
             {/* Note */}
-            <div style={{
-              marginTop: '20px',
-              padding: '16px 20px',
-              background: 'rgba(255,255,255,0.03)',
-              border: '1px solid var(--border)',
-              borderLeft: '3px solid #ff6b35',
-              borderRadius: '12px'
-            }}>
+            <motion.div
+              variants={fadeUp}
+              style={{
+                marginTop: '20px',
+                padding: '16px 20px',
+                background: 'rgba(255,255,255,0.03)',
+                border: '1px solid var(--border)',
+                borderLeft: '3px solid #ff6b35',
+                borderRadius: '12px'
+              }}
+            >
               <span style={{ color: 'var(--text)', fontSize: '13px' }}>
                 Passionate about UI/UX design — I enjoy bridging the gap between
                 great design and functional code using Figma and Webflow.
               </span>
-            </div>
+            </motion.div>
 
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
 
       <style>{`
