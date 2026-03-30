@@ -50,14 +50,14 @@ function About() {
             </div>
             {/* Floating badge */}
             <div style={{
-              position: 'absolute', top: '-20px', right: '-20px',
+              position: 'absolute', top: '0px', right: '0px',
               background: 'var(--accent)', color: '#000',
               borderRadius: '50%', width: '90px', height: '90px',
               display: 'flex', flexDirection: 'column',
               alignItems: 'center', justifyContent: 'center',
               fontFamily: 'var(--font-display)', fontWeight: 800
             }}>
-              <span style={{ fontSize: '20px' }}>2+</span>
+              <span style={{ fontSize: '20px' }}>1+</span>
               <span style={{ fontSize: '9px', letterSpacing: '1px' }}>YEARS</span>
             </div>
           </div>

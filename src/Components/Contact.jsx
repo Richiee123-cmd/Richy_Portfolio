@@ -56,90 +56,125 @@ export default function Contact() {
 
           {/* LEFT — Contact Info */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            {[
-              { icon: '✉', label: 'Email', value: 'richyellavoor2019@gmail.com', href: 'https://mail.google.com/mail/?view=cm&to=richyellavoor2019@gmail.com' },
-              { icon: '📱', label: 'Phone', value: '+91 6282434979', href: 'tel:+916282434979' },
-              { icon: '📍', label: 'Location', value: 'Kochi, Kerala, India', href: null },
-            ].map(item => (
-              <div key={item.label} style={{
-                background: 'var(--bg3)', border: '1px solid var(--border)',
-                borderRadius: '14px', padding: '20px 24px',
-                display: 'flex', alignItems: 'center', gap: '16px'
-              }}>
-                <div style={{
-                  width: '44px', height: '44px', borderRadius: '12px',
-                  background: 'rgba(200,255,0,0.1)',
-                  border: '1px solid rgba(200,255,0,0.2)',
-                  display: 'flex', alignItems: 'center',
-                  justifyContent: 'center', fontSize: '18px', flexShrink: 0
-                }}>{item.icon}</div>
-                <div>
-                  <div style={{
-                    fontSize: '11px', color: 'var(--accent)',
-                    fontFamily: 'var(--font-display)', letterSpacing: '2px',
-                    textTransform: 'uppercase', marginBottom: '2px'
-                  }}>{item.label}</div>
-                  {item.href ? (
-                    <a href={item.href} target="_blank" rel="noreferrer" style={{
-                      color: 'var(--text)', textDecoration: 'none',
-                      fontSize: '14px', fontWeight: 500
-                    }}>{item.value}</a>
-                  ) : (
-                    <span style={{ fontSize: '14px', fontWeight: 500, color: 'var(--text)' }}>
-                      {item.value}
-                    </span>
-                  )}
-                </div>
-              </div>
-            ))}
+  {[
+    { label: 'Email', value: 'richyellavoor2019@gmail.com', href: 'https://mail.google.com/mail/?view=cm&to=richyellavoor2019@gmail.com' },
+    { label: 'Phone', value: '+91 6282434979', href: 'tel:+916282434979' },
+    { label: 'Location', value: 'Kochi, Kerala, India', href: null },
+  ].map(item => (
+    <div
+      key={item.label}
+      style={{
+        background: 'var(--bg3)',
+        border: '1px solid var(--border)',
+        borderLeft: '3px solid var(--accent)', // premium touch
+        borderRadius: '12px',
+        padding: '18px 20px',
+        transition: 'all 0.3s ease',
+      }}
+      onMouseEnter={e => {
+        e.currentTarget.style.borderLeft = '3px solid #fff';
+        e.currentTarget.style.transform = 'translateY(-2px)';
+      }}
+      onMouseLeave={e => {
+        e.currentTarget.style.borderLeft = '3px solid var(--accent)';
+        e.currentTarget.style.transform = 'translateY(0)';
+      }}
+    >
+      <div style={{
+        fontSize: '11px',
+        color: 'var(--accent)',
+        letterSpacing: '2px',
+        textTransform: 'uppercase',
+        marginBottom: '6px'
+      }}>
+        {item.label}
+      </div>
 
-            {/* Social buttons */}
-            <div style={{ display: 'flex', gap: '12px', marginTop: '8px' }}>
-  <a href="https://www.linkedin.com/in/richy-shaji" target="_blank"
-    rel="noreferrer" className="btn"
-    style={{
-      flex: 1, justifyContent: 'center', fontSize: '13px',
-      background: '#0077B5', color: '#fff',
-      border: '1px solid #0077B5', borderRadius: '50px',
-      padding: '10px 24px', transition: 'all 0.3s'
-    }}
-    onMouseOver={e => {
-      e.currentTarget.style.background = '#005f8e';
-      e.currentTarget.style.borderColor = '#005f8e';
-      e.currentTarget.style.transform = 'translateY(-2px)';
-    }}
-    onMouseOut={e => {
-      e.currentTarget.style.background = '#0077B5';
-      e.currentTarget.style.borderColor = '#0077B5';
-      e.currentTarget.style.transform = 'translateY(0)';
-    }}
-  >
-    LinkedIn ↗
-  </a>
+      {item.href ? (
+        <a
+          href={item.href}
+          target="_blank"
+          rel="noreferrer"
+          style={{
+            color: 'var(--text)',
+            textDecoration: 'none',
+            fontSize: '15px',
+            fontWeight: 500
+          }}
+        >
+          {item.value}
+        </a>
+      ) : (
+        <div style={{
+          fontSize: '15px',
+          fontWeight: 500,
+          color: 'var(--text)'
+        }}>
+          {item.value}
+        </div>
+      )}
+    </div>
+  ))}
 
-  <a href="https://github.com/Richiee123-cmd" target="_blank"
-    rel="noreferrer" className="btn"
-    style={{
-      flex: 1, justifyContent: 'center', fontSize: '13px',
-      background: '#fff', color: '#000',
-      border: '1px solid #fff', borderRadius: '50px',
-      padding: '10px 24px', transition: 'all 0.3s'
-    }}
-    onMouseOver={e => {
-      e.currentTarget.style.background = '#e0e0e0';
-      e.currentTarget.style.borderColor = '#e0e0e0';
-      e.currentTarget.style.transform = 'translateY(-2px)';
-    }}
-    onMouseOut={e => {
-      e.currentTarget.style.background = '#fff';
-      e.currentTarget.style.borderColor = '#fff';
-      e.currentTarget.style.transform = 'translateY(0)';
-    }}
-  >
-    GitHub ↗
-  </a>
+  {/* SOCIAL BUTTONS */}
+  <div style={{ display: 'flex', gap: '12px', marginTop: '10px', flexWrap: 'wrap' }}>
+    
+    <a
+      href="https://www.linkedin.com/in/richy-shaji"
+      target="_blank"
+      rel="noreferrer"
+      style={{
+        flex: 1,
+        textAlign: 'center',
+        fontSize: '13px',
+        padding: '10px',
+        borderRadius: '8px',
+        border: '1px solid rgba(255,255,255,0.2)',
+        color: '#fff',
+        textDecoration: 'none',
+        transition: '0.3s'
+      }}
+      onMouseOver={e => {
+        e.currentTarget.style.background = '#fff';
+        e.currentTarget.style.color = '#000';
+      }}
+      onMouseOut={e => {
+        e.currentTarget.style.background = 'transparent';
+        e.currentTarget.style.color = '#fff';
+      }}
+    >
+      LinkedIn →
+    </a>
+
+    <a
+      href="https://github.com/Richiee123-cmd"
+      target="_blank"
+      rel="noreferrer"
+      style={{
+        flex: 1,
+        textAlign: 'center',
+        fontSize: '13px',
+        padding: '10px',
+        borderRadius: '8px',
+        border: '1px solid rgba(255,255,255,0.2)',
+        color: '#fff',
+        textDecoration: 'none',
+        transition: '0.3s'
+      }}
+      onMouseOver={e => {
+        e.currentTarget.style.background = '#fff';
+        e.currentTarget.style.color = '#000';
+      }}
+      onMouseOut={e => {
+        e.currentTarget.style.background = 'transparent';
+        e.currentTarget.style.color = '#fff';
+      }}
+    >
+      GitHub →
+    </a>
+
+  </div>
 </div>
-          </div>
 
           {/* RIGHT — Contact Form */}
           <form ref={formRef} onSubmit={handleSubmit} style={{
